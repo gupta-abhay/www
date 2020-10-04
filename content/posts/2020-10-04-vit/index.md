@@ -115,6 +115,7 @@ The authors also try to duplicate experiments similar to BERT[7], where they try
 
  - can the $\texttt{class}$ token be avoided, and trained in a full MPM style similar to RoBERTa[21]
  - can weight-sharing, similar to ALBERT[22], help reduce model foot-print, and scale to larger models better?
+ - what about a GPT-style encoder[34], which are the most effective for scaling? 
  - are the MPM masks static or dynamic? What is the advantage of one vs another?
  - is this MPM approach the only one? Can we do design something better than a 3-bit, mean color prediction problem?
 
@@ -122,7 +123,7 @@ The authors do not address contrastive pre-training [23,24] and leave this explo
 
  - Can we learn better with contrastive losses? 
  - Will ImageNet be sufficient in these cases? Or will we need to scale larger?
- - Will batch dependencies come in to play? How will Linear BMM (batch matrix multiply) address these?
+ - Will [batch / batchnorm dependencies](https://untitled-ai.github.io/understanding-self-supervised-contrastive-learning.html) come in to play? How will Linear BMM (batch matrix multiply) address these?
  - How can different contrastive methods adapt this __backbone__ out-of-the-box?
 
 
@@ -147,7 +148,7 @@ ViT performs well when you give it large datasets such as JFT-300M, ImageNet-21K
  - Can they perform the function of a good *backbone* for downstream tasks such as object detection and segmentation? These tasks require more than just a "good enough" representation of data. Can existing ideas like Mask R-CNN[28] be plug-and-play with ViTs?  
  - With already high compute budgets, which get compounded when using larger building blocks for downstream tasks - can these models be used practically?
  - DETR[10] shows that using transformers created a problem for handling smaller objects in images and Deformable-DETR[29] takes a stab at fixing this. Can similar ideologies be used with the Hybrid-ViT structure?
- - What modifications do existing backbones such as ResNet-FPN[30], SKResNet[31], etc. need to work hand in hand with this model so that the stronger inductive bias (compared to ResNet) of these backbones do not *overwrite* the data priors?
+ - What modifications do existing backbones such as ResNet-FPN[30], SKResNet[31], etc. need to work hand in hand with this model so that the more representative features (compared to ResNet) of these backbones do not *overwrite* the data priors?
  - Will sparse and fast attention methods in the NLP space be useful here, or will they breakdown the possibility of learning an equivalent of "receptive field"?
 
 
@@ -184,7 +185,7 @@ All these questions and training regime expenses, makes me wonder: What are we g
 
 > Or maybe, just maybe, we get lucky and a synergy happens. We find inductive biases that work well and let data priors handle its failures. 
 
-I think the authors have done a fantastic job of coming up with an idea between the intersection of language and vision, paving way for an exciting new research direction.  
+I think the authors have done a fantastic job of coming up with an idea at the intersection of language and vision, paving way for an exciting new research direction.  
 
 ## References
 
@@ -221,3 +222,4 @@ I think the authors have done a fantastic job of coming up with an idea between 
 31. Li, Xiang, et al. Selective kernel networks. In CVPR, 2019.
 32. Micikevicius, Paulius, et al. Mixed precision training. arXiv preprint arXiv:1710.03740 (2017).
 33. Qizhe Xie, Minh-Thang Luong, Eduard Hovy, and Quoc V. Le.  Self-training with noisy student improves imagenet classification. In CVPR, 2020
+34. Radford, Alec, et al. Language models are unsupervised multitask learners. OpenAI Blog 1.8 (2019): 9.
