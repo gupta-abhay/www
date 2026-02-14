@@ -1,0 +1,58 @@
+baseURL = "https://example.org/"
+languageCode = "en-us"
+title = "Abhay Gupta"
+theme = "PaperMod"
+enableRobotsTXT = true
+
+[pagination]
+  pagerSize = 10
+
+[taxonomies]
+  tag = "tags"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['\\[', '\\]'], ['$$', '$$']]
+          inline = [['\\(', '\\)']]
+
+[params]
+  mainSections = ["blog"]
+  defaultTheme = "auto"
+  ShowReadingTime = true
+  ShowCodeCopyButtons = true
+  ShowShareButtons = false
+  ShowToc = false
+
+  [params.homeInfoParams]
+    Title = ""
+    ProfileImage = "/images/profile.jpg"
+    ProfileAlt = "Profile photo"
+    Content = """
+I am a researcher and an engineer. By vocation, I lead the Scaling team at [Databricks AI](https://www.databricks.com/blog/category/generative-ai/mosaic-research), focused on building infrastructure and conducting research for LLM training. In my downtime, you will usually find me playing video games, traveling, or exploring the local dining scene with friends.
+"""
+
+[[params.socialIcons]]
+  name = "x"
+  url = "https://x.com/gupta__abhay"
+
+[[params.socialIcons]]
+  name = "linkedin"
+  url = "https://www.linkedin.com/in/gupta-abhay/"
+
+[[params.socialIcons]]
+  name = "googlescholar"
+  url = "https://scholar.google.com/citations?user=Pae7GxYAAAAJ&hl=en"
+
+[[params.socialIcons]]
+  name = "spotify"
+  url = "https://open.spotify.com/user/s5fx11ozga4qwg3rjqqfb4ib8?si=220bd6f20d87438c"
+
+[[menu.main]]
+  identifier = "blog"
+  name = "Blog"
+  url = "/blog/"
+  weight = 10
